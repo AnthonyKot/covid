@@ -5,10 +5,6 @@ from pygal.maps.world import COUNTRIES
 from flask import Flask, render_template, request, redirect, url_for
 from pygal.style import Style
 
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
-
 url = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true'
 a = requests.get(url)
 response_dict = a.json()
@@ -73,6 +69,9 @@ def get_dict(x):
         code = get_country_code(country_name)
         if code:
             covid_dict[code] = conf
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 
 @app.route('/')
 def confirmed() -> 'html':
