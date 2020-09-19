@@ -105,11 +105,5 @@ def recovered():
     chart = chart.render_data_uri()
     return render_template('recovered.html', chart=chart)
 
-@app.after_request
-def add_header(response):
-    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
-    response.headers['Cache-Control'] = 'public, max-age=600'
-    return response
-
 if __name__ == '__main__':
     app.run(debug=True)
