@@ -43,7 +43,6 @@ def get_country_code(country_name):
             return 'cg'
         elif country_name == 'Czechia':
             return 'cz'
-    return None
 
 cc, data = [], []
 covid_dict = {}
@@ -64,11 +63,9 @@ def get_dict(x):
     dic_country = dict(zip(cc, data))
 
     for key, value in dic_country.items():
-        country_name = key
-        conf = value
-        code = get_country_code(country_name)
+        code = get_country_code(key)
         if code:
-            covid_dict[code] = conf
+            covid_dict[code] = value
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
