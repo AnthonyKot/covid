@@ -1,6 +1,5 @@
 import requests
 import pygal
-import os
 from pygal.maps.world import COUNTRIES
 from flask import Flask, render_template
 from pygal.style import Style
