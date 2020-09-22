@@ -49,6 +49,25 @@ def recovered():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+def get_dict(x):
+ 
+    global cc
+    global data
+    global covid_dict
+    global response_dict
+
+    for values in response_dict:
+        for key, value in values.items():
+            cc.append(values['countryregion'])
+            data.append(values[x])
+
+    dic_country = dict(zip(cc, data))
+
+    for key, value in dic_country.items():
+        code = get_country_code(key)
+        if code:
+            covid_dict[code] = value
     
 def get_country_code(country_name):
     for code, name in COUNTRIES.items():
@@ -84,22 +103,3 @@ def get_country_code(country_name):
             return 'cg'
         elif country_name == 'Czechia':
             return 'cz'
-
-def get_dict(x):
- 
-    global cc
-    global data
-    global covid_dict
-    global response_dict
-
-    for values in response_dict:
-        for key, value in values.items():
-            cc.append(values['countryregion'])
-            data.append(values[x])
-
-    dic_country = dict(zip(cc, data))
-
-    for key, value in dic_country.items():
-        code = get_country_code(key)
-        if code:
-            covid_dict[code] = value
