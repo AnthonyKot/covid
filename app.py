@@ -2,7 +2,7 @@ import requests
 import pygal
 import os
 from pygal.maps.world import COUNTRIES
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from pygal.style import Style
 
 url = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true'
